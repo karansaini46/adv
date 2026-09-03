@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { CompactHero } from "@/components/hero/CompactHero";
+import { TrustSection } from "@/components/trust/TrustSection";
 import { PracticeOverview } from "@/components/sections/PracticeOverview";
 import { Footer } from "@/components/layout/Footer";
 import { ConsultationModal } from "@/components/consultation/ConsultationModal";
@@ -26,8 +27,11 @@ export default function Home() {
 
         {/* Main Content Area */}
         <main>
-          {/* Step 2 Compact Mobile-First Hero */}
+          {/* Step 2: Compact Mobile-First Hero */}
           <CompactHero onBookConsultation={handleOpenConsultation} />
+
+          {/* Step 3: Trust Section directly below Hero */}
+          <TrustSection />
 
           {/* Core Legal Practice Overview */}
           <PracticeOverview onSelectCategory={handleOpenConsultation} />
