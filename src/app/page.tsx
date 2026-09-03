@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { CompactHero } from "@/components/hero/CompactHero";
 import { TrustSection } from "@/components/trust/TrustSection";
 import { PracticeGrid } from "@/components/sections/PracticeGrid";
+import { AboutSection } from "@/components/about/AboutSection";
 import { Footer } from "@/components/layout/Footer";
 import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 
@@ -35,6 +36,9 @@ export default function Home() {
 
           {/* Step 4: 2-Column Mobile Practice Grid */}
           <PracticeGrid onSelectPractice={handleOpenConsultation} />
+
+          {/* Step 5: Compact About Section */}
+          <AboutSection onBookConsultation={handleOpenConsultation} />
         </main>
       </div>
 
