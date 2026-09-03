@@ -14,13 +14,13 @@ interface CompactHeroProps {
 
 export function CompactHero({ onBookConsultation }: CompactHeroProps) {
   return (
-    <section className="pt-3 sm:pt-6 pb-4 sm:pb-8">
+    <section className="pt-3 sm:pt-6 pb-4 sm:pb-6">
       <Container size="default">
         {/* Compact Hero Card Container - 16px rounded card */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.18 }}
         >
           <Card
             variant="default"

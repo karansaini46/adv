@@ -31,10 +31,10 @@ export function TrustSection() {
   ];
 
   return (
-    <section className="py-4 sm:py-6">
+    <section className="py-3 sm:py-5">
       <Container size="default">
         {/* Compact Header */}
-        <div className="mb-3 text-center sm:text-left">
+        <div className="mb-2.5 text-center sm:text-left">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-[#536455]">
             Core Legal Values
           </span>
@@ -48,17 +48,17 @@ export function TrustSection() {
           {trustPillars.map((pillar, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: index * 0.05 }}
+              transition={{ duration: 0.15, delay: index * 0.03 }}
             >
               <Card
                 variant="default"
                 hoverable
-                className="p-3.5 sm:p-4.5 bg-[#FAF7F2] border-[#E2D7C5] rounded-[16px] h-full flex flex-col justify-between"
+                className="p-3 sm:p-4 bg-[#FAF7F2] border-[#E2D7C5] rounded-[16px] h-full flex flex-col justify-between"
               >
                 <div className="space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-[#E4EBE5] border border-[#C8D6CA] flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-[#E4EBE5] border border-[#C8D6CA] flex items-center justify-center shrink-0">
                     {pillar.icon}
                   </div>
                   <div className="space-y-0.5">

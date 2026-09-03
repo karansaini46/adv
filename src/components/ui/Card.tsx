@@ -23,11 +23,11 @@ export function Card({
 
   return (
     <div
-      className={`rounded-[16px] p-5 sm:p-6 transition-all duration-200 ${
+      className={`rounded-[16px] p-4 sm:p-6 transition-all duration-150 ${
         variantStyles[variant]
       } ${
         hoverable
-          ? "hover:border-[#D7C7B2] hover:shadow-sm"
+          ? "hover:border-[#D7C7B2] hover:shadow-xs"
           : ""
       } ${className}`}
       {...props}

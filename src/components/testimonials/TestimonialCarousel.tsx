@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 
 export function TestimonialCarousel() {
@@ -40,18 +40,18 @@ export function TestimonialCarousel() {
   };
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -40) {
+    if (info.offset.x < -30) {
       handleNext();
-    } else if (info.offset.x > 40) {
+    } else if (info.offset.x > 30) {
       handlePrev();
     }
   };
 
   return (
-    <section className="py-6 sm:py-10 bg-[#FAF7F2]">
+    <section className="py-4 sm:py-8 bg-[#FAF7F2]">
       <Container size="default">
         {/* Section Header */}
-        <div className="space-y-1 mb-4 sm:mb-6 text-center sm:text-left">
+        <div className="space-y-1 mb-3 sm:mb-5 text-center sm:text-left">
           <Badge variant="sage">Client Experiences</Badge>
           <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1B2430]">
             Feedback from Clients Served
@@ -68,19 +68,19 @@ export function TestimonialCarousel() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 14 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.25 }}
+                exit={{ opacity: 0, x: -14 }}
+                transition={{ duration: 0.16 }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
+                dragElastic={0.15}
                 onDragEnd={handleDragEnd}
                 className="cursor-grab active:cursor-grabbing touch-pan-y"
               >
                 <Card
                   variant="default"
-                  className="bg-[#FAF7F2] border-[#E2D7C5] p-5 sm:p-7 rounded-[16px] space-y-4 shadow-sm relative"
+                  className="bg-[#FAF7F2] border-[#E2D7C5] p-4 sm:p-6 rounded-[16px] space-y-3.5 shadow-sm relative"
                 >
                   {/* Quote Icon Background Badge */}
                   <div className="flex items-center justify-between">
@@ -98,7 +98,7 @@ export function TestimonialCarousel() {
                   </p>
 
                   {/* Client Info Footer */}
-                  <div className="pt-3 border-t border-[#E2D7C5]/70 flex items-center justify-between">
+                  <div className="pt-2.5 border-t border-[#E2D7C5]/70 flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-sm font-bold text-[#1B2430]">
                         {testimonials[currentIndex].name}
@@ -118,7 +118,7 @@ export function TestimonialCarousel() {
           </div>
 
           {/* Navigation Controls & Pagination Dots */}
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-3 flex items-center justify-between">
             {/* Dots */}
             <div className="flex items-center gap-1.5">
               {testimonials.map((_, idx) => (
@@ -126,7 +126,7 @@ export function TestimonialCarousel() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-200 ${
+                  className={`h-2 rounded-full transition-all duration-150 ${
                     idx === currentIndex
                       ? "w-6 bg-[#1B2430]"
                       : "w-2 bg-[#E2D7C5] hover:bg-[#536455]"
@@ -140,14 +140,14 @@ export function TestimonialCarousel() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous testimonial"
-                className="p-2 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-[#1B2430] hover:bg-[#E2D7C5] active:scale-95 transition-all"
+                className="p-1.5 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-[#1B2430] hover:bg-[#E2D7C5] active:scale-95 transition-all"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next testimonial"
-                className="p-2 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-[#1B2430] hover:bg-[#E2D7C5] active:scale-95 transition-all"
+                className="p-1.5 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-[#1B2430] hover:bg-[#E2D7C5] active:scale-95 transition-all"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>

@@ -36,10 +36,10 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="py-6 sm:py-10 bg-[#FAF7F2]">
+    <section className="py-4 sm:py-8 bg-[#FAF7F2]">
       <Container size="default">
         {/* Compact Heading */}
-        <div className="mb-4 sm:mb-6 text-center sm:text-left space-y-1">
+        <div className="mb-3 sm:mb-5 text-center sm:text-left space-y-1">
           <Badge variant="sage">Chambers Overview</Badge>
           <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1B2430]">
             Practice Track Record & Benefits
@@ -51,10 +51,10 @@ export function StatsSection() {
           {stats.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 4 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
+              transition={{ duration: 0.16, delay: index * 0.03 }}
             >
               <Card
                 variant="default"
