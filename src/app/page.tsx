@@ -8,6 +8,7 @@ import { PracticeGrid } from "@/components/sections/PracticeGrid";
 import { AboutSection } from "@/components/about/AboutSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { TestimonialCarousel } from "@/components/testimonials/TestimonialCarousel";
+import { ContactSection } from "@/components/contact/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 
@@ -47,6 +48,9 @@ export default function Home() {
 
           {/* Step 7: Swipeable Mobile Testimonial Carousel */}
           <TestimonialCarousel />
+
+          {/* Step 8: Premium Contact Section */}
+          <ContactSection onBookConsultation={handleOpenConsultation} />
         </main>
       </div>
 
