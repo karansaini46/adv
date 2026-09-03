@@ -7,6 +7,7 @@ import { TrustSection } from "@/components/trust/TrustSection";
 import { PracticeGrid } from "@/components/sections/PracticeGrid";
 import { AboutSection } from "@/components/about/AboutSection";
 import { StatsSection } from "@/components/sections/StatsSection";
+import { TestimonialCarousel } from "@/components/testimonials/TestimonialCarousel";
 import { Footer } from "@/components/layout/Footer";
 import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 
@@ -43,6 +44,9 @@ export default function Home() {
 
           {/* Step 6: 4 Statistics & Benefits */}
           <StatsSection />
+
+          {/* Step 7: Swipeable Mobile Testimonial Carousel */}
+          <TestimonialCarousel />
         </main>
       </div>
 
