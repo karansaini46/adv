@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { CompactHero } from "@/components/hero/CompactHero";
 import { TrustSection } from "@/components/trust/TrustSection";
-import { PracticeOverview } from "@/components/sections/PracticeOverview";
+import { PracticeGrid } from "@/components/sections/PracticeGrid";
 import { Footer } from "@/components/layout/Footer";
 import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 
@@ -33,8 +33,8 @@ export default function Home() {
           {/* Step 3: Trust Section directly below Hero */}
           <TrustSection />
 
-          {/* Core Legal Practice Overview */}
-          <PracticeOverview onSelectCategory={handleOpenConsultation} />
+          {/* Step 4: 2-Column Mobile Practice Grid */}
+          <PracticeGrid onSelectPractice={handleOpenConsultation} />
         </main>
       </div>
 
