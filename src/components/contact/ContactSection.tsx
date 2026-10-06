@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { MapPin, Phone, Mail, Clock, MessageSquare, ExternalLink, Navigation } from "lucide-react";
+import { MapPin, Phone, Clock, MessageSquare, ExternalLink, Navigation } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ContactSectionProps {
@@ -14,7 +14,7 @@ interface ContactSectionProps {
 
 export function ContactSection({ onBookConsultation }: ContactSectionProps) {
   const whatsappUrl =
-    "https://wa.me/919829012345?text=Hello%20Advocate%20Rajeshwar%20Sharma,%20I%20need%20legal%20guidance.";
+    "https://wa.me/917014438542?text=Hello%20Adv.%20Deepak%20Gahlot,%20I%20need%20legal%20guidance.";
 
   return (
     <section className="py-6 sm:py-10 bg-[#FAF7F2]">
@@ -26,7 +26,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
             Visit Chambers or Connect Direct
           </h2>
           <p className="text-xs sm:text-sm text-[#4B5A6C]">
-            Located at the Rajasthan High Court premises & C-Scheme in Jaipur.
+            Chamber No. 154, E-Block, Rajasthan High Court.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
               {/* Header Badges */}
               <div className="flex items-center justify-between border-b border-[#E2D7C5]/70 pb-3">
                 <span className="font-serif font-bold text-base text-[#1B2430]">
-                  Advocate Rajeshwar Sharma
+                  Adv. Deepak Gahlot
                 </span>
                 <Badge variant="sandstone">Jaipur Bench</Badge>
               </div>
@@ -53,9 +53,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
                   <MapPin className="w-4 h-4 text-[#536455] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-[#1B2430] block">High Court Chamber:</strong>
-                    Chamber No. 114, Lawyers Block, Rajasthan High Court Premises, Jaipur - 302005
-                    <strong className="text-[#1B2430] block mt-1">Main Office:</strong>
-                    42, Lawyers Enclave, C-Scheme, Jaipur - 302001
+                    Chamber No. 154, E-Block, Rajasthan High Court
                   </div>
                 </li>
 
@@ -64,22 +62,12 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
                   <Phone className="w-4 h-4 text-[#536455] shrink-0" />
                   <div>
                     <strong className="text-[#1B2430] mr-1.5">Phone:</strong>
-                    <a href="tel:+919829012345" className="hover:text-[#1B2430] font-semibold">
-                      +91 98290 12345
+                    <a href="tel:+917014438542" className="hover:text-[#1B2430] font-semibold">
+                      +91 70144 38542
                     </a>
                   </div>
                 </li>
 
-                {/* Email */}
-                <li className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-[#536455] shrink-0" />
-                  <div>
-                    <strong className="text-[#1B2430] mr-1.5">Email:</strong>
-                    <a href="mailto:advocate.rsharma.jaipur@gmail.com" className="hover:text-[#1B2430]">
-                      advocate.rsharma.jaipur@gmail.com
-                    </a>
-                  </div>
-                </li>
 
                 {/* Office Hours */}
                 <li className="flex items-center gap-2.5">
@@ -94,7 +82,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
 
             {/* Mobile Action Buttons: Call & WhatsApp ALWAYS Side-by-Side */}
             <div className="pt-3 border-t border-[#E2D7C5] grid grid-cols-2 gap-2">
-              <a href="tel:+919829012345" className="w-full">
+              <a href="tel:+917014438542" className="w-full">
                 <Button variant="primary" size="md" fullWidth leftIcon={<Phone className="w-4 h-4" />}>
                   Call Now
                 </Button>
@@ -118,7 +106,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
                 <span className="text-xs font-semibold text-[#536455] uppercase tracking-wider">
                   Interactive Location Map
                 </span>
-                <Badge variant="outline">Jaipur Court District</Badge>
+                <Badge variant="outline">Rajasthan High Court</Badge>
               </div>
 
               {/* Styled Map Container Placeholder */}
@@ -128,10 +116,10 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
                 </div>
                 <div className="space-y-0.5">
                   <p className="font-serif text-sm font-bold text-[#1B2430]">
-                    Rajasthan High Court Premises & C-Scheme Office
+                    Chamber No. 154, E-Block, Rajasthan High Court
                   </p>
                   <p className="text-[11px] text-[#4B5A6C]">
-                    Jaipur - 302005, Rajasthan, India
+                    Rajasthan, India
                   </p>
                 </div>
 

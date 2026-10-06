@@ -10,9 +10,9 @@ import { motion } from "framer-motion";
 export function StatsSection() {
   const stats = [
     {
-      value: "12+",
-      label: "Years Experience",
-      subtext: "High Court & Trial Courts Litigation",
+      value: "LLM",
+      label: "& More Degrees",
+      subtext: "LLB, PGDFS, PGDLL, M.COM, B.COM",
       icon: <Award className="w-4 h-4 text-[#536455]" />,
     },
     {

@@ -29,21 +29,21 @@ export function CompactHero({ onBookConsultation }: CompactHeroProps) {
             {/* Top Badges Row */}
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="navy" icon={<Scale className="w-3 h-3 text-[#FAF7F2]" />}>
-                Jaipur High Court
+                Rajasthan High Court
               </Badge>
               <Badge variant="sage" icon={<Award className="w-3.5 h-3.5 text-[#536455]" />}>
-                12+ Years Experience
+                LLM | LLB | PGDFS | PGDLL | M.COM | B.COM
               </Badge>
             </div>
 
             {/* Advocate Heading & Subtitle */}
             <div className="space-y-1.5 pt-1">
               <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B2430] leading-tight tracking-tight">
-                Advocate Rajeshwar Sharma
+                Adv. Deepak Gahlot
               </h1>
               <p className="text-xs sm:text-sm font-medium text-[#4B5A6C] flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#536455] shrink-0" />
-                <span>Rajasthan High Court, Jaipur Bench & District Courts</span>
+                <span>Chamber No. 154, E-Block, Rajasthan High Court</span>
               </p>
             </div>
 
@@ -56,7 +56,7 @@ export function CompactHero({ onBookConsultation }: CompactHeroProps) {
 
             {/* Concise Legal Statement in Simple Indian English */}
             <p className="text-xs sm:text-sm text-[#4B5A6C] leading-relaxed">
-              Providing straightforward legal guidance, thorough case preparation, and dedicated representation for individuals and businesses across Rajasthan.
+              Providing straightforward legal guidance, thorough case preparation, and dedicated representation at the Rajasthan High Court.
             </p>
 
             {/* CTAs: Primary & Secondary */}
@@ -71,7 +71,7 @@ export function CompactHero({ onBookConsultation }: CompactHeroProps) {
                 Book Consultation
               </Button>
               
-              <a href="tel:+919829012345" className="w-full">
+              <a href="tel:+917014438542" className="w-full">
                 <Button
                   variant="secondary"
                   size="md"
@@ -90,7 +90,7 @@ export function CompactHero({ onBookConsultation }: CompactHeroProps) {
                 BCI Enrolled Advocate
               </span>
               <span className="font-medium text-[#1B2430]">
-                Jaipur Chambers Available
+                High Court Chamber Available
               </span>
             </div>
           </Card>

@@ -21,16 +21,15 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Advocate Rajeshwar Sharma | Jaipur High Court Lawyer",
+  title: "Adv. Deepak Gahlot | Rajasthan High Court Advocate",
   description:
-    "Official legal practice site of Advocate Rajeshwar Sharma. 12+ Years Experience in Civil, Criminal, and Family Law at Rajasthan High Court, Jaipur Bench.",
+    "Official legal practice site of Adv. Deepak Gahlot. Chamber No. 154, E-Block, Rajasthan High Court. Qualification: LLM LLB PGDFS PGDLL M.COM B.COM.",
   keywords: [
-    "Jaipur High Court Advocate",
-    "Advocate Rajeshwar Sharma",
+    "Rajasthan High Court Advocate",
+    "Adv Deepak Gahlot",
     "Rajasthan High Court Lawyer",
-    "Civil Lawyer Jaipur",
-    "Criminal Lawyer Jaipur",
-    "Family Court Lawyer Jaipur",
+    "High Court Chamber E-Block",
+    "Advocate Deepak Gahlot",
   ],
 };
 

@@ -69,7 +69,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                 </div>
                 <div className="p-3 rounded-xl bg-[#EFE9DE] text-xs text-[#4B5A6C] text-left space-y-1">
                   <p className="font-semibold text-[#1B2430]">Chamber Address for In-Person Meeting:</p>
-                  <p>42, Lawyers Enclave, C-Scheme, Jaipur (Mon-Sat, 9:30 AM - 7 PM)</p>
+                  <p>Chamber No. 154, E-Block, Rajasthan High Court (Mon-Sat, 9:30 AM - 7 PM)</p>
                 </div>
                 <Button variant="primary" fullWidth onClick={handleReset}>
                   Done
@@ -85,7 +85,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     Book a Legal Consultation
                   </h2>
                   <p className="text-xs text-[#4B5A6C]">
-                    Fill in your details below to request a meeting at our Jaipur chambers or a phone discussion.
+                    Fill in your details below to request a meeting at the High Court chamber or a phone discussion.
                   </p>
                 </div>
 
@@ -111,7 +111,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     <input
                       type="tel"
                       required
-                      placeholder="e.g. 98290XXXXX"
+                      placeholder="e.g. 70144XXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D7C5] bg-[#FAF7F2] text-sm text-[#1B2430] focus:outline-none focus:ring-2 focus:ring-[#1B2430]"
@@ -175,8 +175,8 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                 <div className="pt-2 border-t border-[#E2D7C5] text-center">
                   <p className="text-xs text-[#4B5A6C]">
                     Need urgent assistance?{" "}
-                    <a href="tel:+919829012345" className="font-semibold text-[#1B2430] underline">
-                      Call Chambers Directly (+91 98290 12345)
+                    <a href="tel:+917014438542" className="font-semibold text-[#1B2430] underline">
+                      Call Chambers Directly (+91 70144 38542)
                     </a>
                   </p>
                 </div>

@@ -22,12 +22,12 @@ export function Header({ onOpenConsultation }: HeaderProps) {
         <Container className="flex justify-between items-center text-[11px] sm:text-xs">
           <div className="flex items-center gap-1.5 font-medium">
             <MapPin className="w-3 h-3 text-[#536455]" />
-            <span>Chambers at Rajasthan High Court, Jaipur Bench</span>
+            <span>Chamber No. 154, E-Block, Rajasthan High Court</span>
           </div>
           <div className="hidden sm:flex items-center gap-3">
             <span>Mon - Sat: 9:30 AM - 7:00 PM</span>
             <span className="text-[#E2D7C5]">|</span>
-            <span className="font-semibold text-[#1B2430]">High Court Advocate</span>
+            <span className="font-semibold text-[#1B2430]">Rajasthan High Court Advocate</span>
           </div>
         </Container>
       </div>
@@ -43,11 +43,11 @@ export function Header({ onOpenConsultation }: HeaderProps) {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-serif text-base sm:text-lg font-bold text-[#1B2430] tracking-tight">
-                  Adv. Rajeshwar Sharma
+                  Adv. Deepak Gahlot
                 </span>
               </div>
               <p className="text-xs text-[#4B5A6C] font-medium">
-                Jaipur High Court Advocate
+                Rajasthan High Court Advocate
               </p>
             </div>
           </div>
@@ -55,11 +55,11 @@ export function Header({ onOpenConsultation }: HeaderProps) {
           {/* Desktop Navigation & Actions */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+919829012345"
+              href="tel:+917014438542"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B2430] hover:text-[#536455] px-3 py-2 rounded-lg hover:bg-[#EFE9DE] transition-colors"
             >
               <Phone className="w-4 h-4 text-[#536455]" />
-              <span>+91 98290 12345</span>
+              <span>+91 70144 38542</span>
             </a>
             <Button
               variant="primary"
@@ -73,7 +73,7 @@ export function Header({ onOpenConsultation }: HeaderProps) {
           {/* Mobile Direct Call & Hamburger */}
           <div className="flex items-center gap-2 md:hidden">
             <a
-              href="tel:+919829012345"
+              href="tel:+917014438542"
               aria-label="Call Now"
               className="p-2 rounded-xl bg-[#E4EBE5] text-[#536455] active:scale-95 transition-transform"
             >
@@ -109,13 +109,13 @@ export function Header({ onOpenConsultation }: HeaderProps) {
                   High Court Enrollment & Court Chambers
                 </p>
                 <p className="text-xs text-[#4B5A6C]">
-                  Chamber No. 114, High Court Campus, Jaipur • C-Scheme Office
+                  Chamber No. 154, E-Block, Rajasthan High Court
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <a
-                  href="tel:+919829012345"
+                  href="tel:+917014438542"
                   className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-sm font-semibold text-[#1B2430]"
                 >
                   <Phone className="w-4 h-4 text-[#536455]" />

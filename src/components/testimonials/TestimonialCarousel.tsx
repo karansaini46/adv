@@ -15,7 +15,7 @@ export function TestimonialCarousel() {
       name: "Rakesh Sharma",
       location: "Jaipur • Property Dispute",
       court: "High Court Stay Order",
-      text: "Advocate Rajeshwar sir handled our ancestral property dispute in the High Court. He explained the legal process clearly and got our stay order quickly without making false promises. Very grounded advocate.",
+      text: "Adv. Deepak Gahlot sir handled our ancestral property dispute in the High Court. He explained the legal process clearly and got our stay order quickly without making false promises. Very grounded advocate.",
     },
     {
       name: "Neha Gupta",
@@ -25,9 +25,9 @@ export function TestimonialCarousel() {
     },
     {
       name: "Imran Khan",
-      location: "C-Scheme, Jaipur • Urgent Bail",
+      location: "Urgent Bail Matter",
       court: "Sessions & High Court Bench",
-      text: "When my brother needed urgent bail in a commercial case, Advocate Sharma prepared the papers overnight and presented the facts strongly before the High Court bench. Got relief in first hearing.",
+      text: "When my brother needed urgent bail in a commercial case, Adv. Gahlot prepared the papers overnight and presented the facts strongly before the High Court bench. Got relief in first hearing.",
     },
   ];
 
@@ -57,7 +57,7 @@ export function TestimonialCarousel() {
             Feedback from Clients Served
           </h2>
           <p className="text-xs sm:text-sm text-[#4B5A6C]">
-            Swipe across to read honest words from individuals represented in Jaipur courts.
+            Swipe across to read honest words from clients represented in courts.
           </p>
         </div>
 

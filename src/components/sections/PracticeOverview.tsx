@@ -15,7 +15,7 @@ export function PracticeOverview({ onSelectCategory }: PracticeOverviewProps) {
       icon: <Scale className="w-5 h-5 text-[#536455]" />,
       badge: "High Court & Revenue",
       description:
-        "Handling property title disputes, breach of contract, stay orders, and Constitutional Writ petitions before the Rajasthan High Court, Jaipur Bench.",
+        "Handling property title disputes, breach of contract, stay orders, and Constitutional Writ petitions before the Rajasthan High Court.",
       highlights: ["Property Title & Boundary Suits", "High Court Writ Petitions (Art. 226)", "Stay Orders & Injunctions"],
     },
     {
@@ -47,7 +47,7 @@ export function PracticeOverview({ onSelectCategory }: PracticeOverviewProps) {
               Key Areas of Legal Practice
             </h2>
             <p className="text-xs sm:text-sm text-[#4B5A6C] max-w-2xl">
-              Focusing on trial preparation, legal strategy, and effective representation across Jaipur courts.
+              Focusing on trial preparation, legal strategy, and effective representation at the Rajasthan High Court.
             </p>
           </div>
 

@@ -28,7 +28,7 @@ export function AboutSection({ onBookConsultation }: AboutSectionProps) {
               <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-full md:h-64 rounded-[16px] overflow-hidden border-2 border-[#E2D7C5] shadow-sm bg-[#EFE9DE]">
                 <Image
                   src="/advocate_portrait.png"
-                  alt="Advocate Rajeshwar Sharma - Jaipur High Court Lawyer"
+                  alt="Adv. Deepak Gahlot - Rajasthan High Court Advocate"
                   fill
                   sizes="(max-width: 768px) 208px, 320px"
                   className="object-cover object-top"
@@ -48,23 +48,23 @@ export function AboutSection({ onBookConsultation }: AboutSectionProps) {
               <div className="space-y-1 text-center md:text-left">
                 <Badge variant="sage">About the Counsel</Badge>
                 <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1B2430]">
-                  Advocate Rajeshwar Sharma
+                  Adv. Deepak Gahlot
                 </h2>
                 <p className="text-xs font-semibold text-[#536455]">
-                  12+ Years High Court & Trial Practice
+                  LLM | LLB | PGDFS | PGDLL | M.COM | B.COM
                 </p>
               </div>
 
               {/* Exact Copy - 71 Words (Under 90 Words Limit) */}
               <div className="space-y-2.5 text-xs sm:text-sm text-[#4B5A6C] leading-relaxed text-left">
                 <p>
-                  I am Advocate Rajeshwar Sharma, practicing at the Rajasthan High Court, Jaipur Bench for over 12 years.
+                  I am Adv. Deepak Gahlot, practicing at the Rajasthan High Court.
                 </p>
                 <p>
-                  I believe every client deserves clear, personalized legal advice without unnecessary litigation delays. My chambers focus on honest case evaluation, transparent guidance, and ethical representation in Civil, Criminal, and Family matters.
+                  I believe every client deserves clear, personalized legal advice without unnecessary litigation delays. My chamber focuses on honest case evaluation, transparent guidance, and ethical representation in Civil, Criminal, and Family matters.
                 </p>
                 <p>
-                  Whether defending your rights in High Court or resolving property disputes in District Courts, I stand by you with firm commitment and complete confidentiality.
+                  Chamber No. 154, E-Block, Rajasthan High Court. Contact: +91 70144 38542.
                 </p>
               </div>
 

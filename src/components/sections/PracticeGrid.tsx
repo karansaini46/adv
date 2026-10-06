@@ -33,7 +33,7 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
       title: "Civil Litigation",
       description: "High Court writs, contracts, injunctions, and civil dispute resolution.",
       detail:
-        "Comprehensive representation before the Rajasthan High Court, Jaipur Bench and District Courts for civil suits, stay injunctions, contract breaches, and Article 226 Constitutional writ petitions.",
+        "Comprehensive representation before the Rajasthan High Court and District Courts for civil suits, stay injunctions, contract breaches, and Article 226 Constitutional writ petitions.",
       icon: <Scale className="w-4 h-4 text-[#536455]" />,
     },
     {
@@ -90,7 +90,7 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
             Core Areas of Practice
           </h2>
           <p className="text-xs sm:text-sm text-[#4B5A6C]">
-            Targeted legal solutions in the Rajasthan High Court & Jaipur Subordinate Courts.
+            Targeted legal solutions at the Rajasthan High Court & Subordinate Courts.
           </p>
         </div>
 
@@ -171,10 +171,10 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
 
                 <div className="pt-2 flex flex-col gap-2">
                   <a
-                    href="tel:+919829012345"
+                    href="tel:+917014438542"
                     className="w-full text-center py-2.5 px-4 rounded-xl bg-[#1B2430] text-[#FAF7F2] text-xs sm:text-sm font-semibold hover:bg-[#273444] transition-colors"
                   >
-                    Discuss Case with Advocate (+91 98290 12345)
+                    Discuss Case with Advocate (+91 70144 38542)
                   </a>
                   <button
                     onClick={() => setSelectedPractice(null)}
