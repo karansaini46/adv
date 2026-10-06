@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Phone, Menu, X, Scale, MapPin } from "lucide-react";
@@ -13,7 +13,35 @@ interface HeaderProps {
 export function Header({ onOpenConsultation }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handleCloseMenu = useCallback(() => {
+    if (window.location.hash === "#menu") {
+      window.history.back();
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  }, []);
+
+  const toggleMenu = () => {
+    if (isMobileMenuOpen) {
+      handleCloseMenu();
+    } else {
+      setIsMobileMenuOpen(true);
+    }
+  };
+
+  // Sync menu state with browser history so pressing Back button closes drawer without leaving site
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      window.history.pushState({ menuModal: true }, "", "#menu");
+      const handlePopState = () => {
+        setIsMobileMenuOpen(false);
+      };
+      window.addEventListener("popstate", handlePopState);
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-sm border-b border-[#E2D7C5]">
@@ -33,32 +61,45 @@ export function Header({ onOpenConsultation }: HeaderProps) {
       </div>
 
       {/* Main Header Bar */}
-      <div className="py-3 sm:py-4">
+      <div className="py-2.5 sm:py-3.5">
         <Container className="flex items-center justify-between">
           {/* Logo / Advocate Title */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#1B2430] flex items-center justify-center text-[#FAF7F2] shrink-0">
-              <Scale className="w-5 h-5" />
+          <a href="#" className="flex items-center gap-2.5 sm:gap-3 group">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#1B2430] flex items-center justify-center text-[#FAF7F2] shrink-0 group-hover:bg-[#273444] transition-colors">
+              <Scale className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif text-base sm:text-lg font-bold text-[#1B2430] tracking-tight">
+                <span className="font-serif text-sm sm:text-lg font-bold text-[#1B2430] tracking-tight">
                   Adv. Deepak Gahlot
                 </span>
               </div>
-              <p className="text-xs text-[#4B5A6C] font-medium">
+              <p className="text-[11px] sm:text-xs text-[#4B5A6C] font-medium">
                 Rajasthan High Court Advocate
               </p>
             </div>
-          </div>
+          </a>
 
-          {/* Desktop Navigation & Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-[#4B5A6C]">
+            <a href="#practice" className="hover:text-[#1B2430] transition-colors">
+              Practice Areas
+            </a>
+            <a href="#about" className="hover:text-[#1B2430] transition-colors">
+              About Counsel
+            </a>
+            <a href="#contact" className="hover:text-[#1B2430] transition-colors">
+              Chambers & Contact
+            </a>
+          </nav>
+
+          {/* Desktop Direct Contact & Booking */}
+          <div className="hidden md:flex items-center gap-3">
             <a
               href="tel:+917014438542"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1B2430] hover:text-[#536455] px-3 py-2 rounded-lg hover:bg-[#EFE9DE] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1B2430] hover:text-[#536455] px-3 py-2 rounded-lg hover:bg-[#EFE9DE] transition-colors"
             >
-              <Phone className="w-4 h-4 text-[#536455]" />
+              <Phone className="w-3.5 h-3.5 text-[#536455]" />
               <span>+91 70144 38542</span>
             </a>
             <Button
@@ -70,8 +111,8 @@ export function Header({ onOpenConsultation }: HeaderProps) {
             </Button>
           </div>
 
-          {/* Mobile Direct Call & Hamburger */}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Mobile Actions: Direct Call & Hamburger Menu */}
+          <div className="flex items-center gap-1.5 md:hidden">
             <a
               href="tel:+917014438542"
               aria-label="Call Now"
@@ -103,10 +144,38 @@ export function Header({ onOpenConsultation }: HeaderProps) {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-[#E2D7C5] bg-[#F3EEE6] overflow-hidden"
           >
-            <Container className="py-4 space-y-3">
-              <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E2D7C5] space-y-1">
-                <p className="text-xs font-semibold text-[#536455]">
-                  High Court Enrollment & Court Chambers
+            <Container className="py-3.5 space-y-3">
+              {/* In-page navigation links */}
+              <nav className="flex flex-col space-y-1">
+                <a
+                  href="#practice"
+                  onClick={handleCloseMenu}
+                  className="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-[#1B2430] hover:bg-[#FAF7F2] transition-colors flex items-center justify-between"
+                >
+                  <span>Practice Areas</span>
+                  <span className="text-xs text-[#536455]">&rarr;</span>
+                </a>
+                <a
+                  href="#about"
+                  onClick={handleCloseMenu}
+                  className="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-[#1B2430] hover:bg-[#FAF7F2] transition-colors flex items-center justify-between"
+                >
+                  <span>About Counsel</span>
+                  <span className="text-xs text-[#536455]">&rarr;</span>
+                </a>
+                <a
+                  href="#contact"
+                  onClick={handleCloseMenu}
+                  className="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-[#1B2430] hover:bg-[#FAF7F2] transition-colors flex items-center justify-between"
+                >
+                  <span>Chambers & Contact</span>
+                  <span className="text-xs text-[#536455]">&rarr;</span>
+                </a>
+              </nav>
+
+              <div className="p-2.5 rounded-xl bg-[#FAF7F2] border border-[#E2D7C5] space-y-0.5">
+                <p className="text-[11px] font-semibold text-[#536455]">
+                  High Court Chamber
                 </p>
                 <p className="text-xs text-[#4B5A6C]">
                   Chamber No. 154, E-Block, Rajasthan High Court
@@ -116,21 +185,23 @@ export function Header({ onOpenConsultation }: HeaderProps) {
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <a
                   href="tel:+917014438542"
-                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-sm font-semibold text-[#1B2430]"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] text-xs font-semibold text-[#1B2430]"
                 >
-                  <Phone className="w-4 h-4 text-[#536455]" />
+                  <Phone className="w-3.5 h-3.5 text-[#536455]" />
                   <span>Call Now</span>
                 </a>
                 <Button
                   variant="primary"
-                  size="md"
+                  size="sm"
                   fullWidth
                   onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    if (onOpenConsultation) onOpenConsultation();
+                    handleCloseMenu();
+                    if (onOpenConsultation) {
+                      setTimeout(() => onOpenConsultation(), 120);
+                    }
                   }}
                 >
-                  Book Consultation
+                  Book Slot
                 </Button>
               </div>
             </Container>

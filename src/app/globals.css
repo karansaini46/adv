@@ -20,6 +20,10 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--bg-cream);
     color: var(--navy-primary);

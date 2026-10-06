@@ -12,7 +12,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ onBookConsultation }: AboutSectionProps) {
   return (
-    <section className="py-4 sm:py-8">
+    <section id="about" className="py-4 sm:py-8 scroll-mt-16">
       <Container size="default">
         <Card
           variant="default"

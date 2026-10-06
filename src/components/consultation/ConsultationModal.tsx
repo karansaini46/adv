@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { X, Calendar, Phone, Clock, MapPin, CheckCircle2 } from "lucide-react";
@@ -9,17 +9,48 @@ import { motion, AnimatePresence } from "framer-motion";
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
+  defaultCategory?: string;
 }
 
-export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
+export function ConsultationModal({ isOpen, onClose, defaultCategory }: ConsultationModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    category: "Civil Law",
+    category: defaultCategory || "Civil Litigation",
     preferredTime: "Morning (10 AM - 1 PM)",
     notes: "",
   });
+
+  useEffect(() => {
+    if (defaultCategory) {
+      setFormData((prev) => ({ ...prev, category: defaultCategory }));
+    }
+  }, [defaultCategory]);
+
+  const handleSafeClose = useCallback(() => {
+    if (window.location.hash === "#consultation") {
+      window.history.back();
+    } else {
+      setSubmitted(false);
+      onClose();
+    }
+  }, [onClose]);
+
+  // Sync with browser history so pressing Back button closes modal without closing tab/leaving site
+  useEffect(() => {
+    if (isOpen) {
+      window.history.pushState({ consultationModal: true }, "", "#consultation");
+      const handlePopState = () => {
+        setSubmitted(false);
+        onClose();
+      };
+      window.addEventListener("popstate", handlePopState);
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }
+  }, [isOpen, onClose]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,25 +59,29 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
   const handleReset = () => {
     setSubmitted(false);
-    onClose();
+    handleSafeClose();
   };
 
   if (!isOpen) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1B2430]/60 backdrop-blur-xs">
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1B2430]/60 backdrop-blur-xs"
+        onClick={handleSafeClose}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="w-full max-w-lg overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-lg overflow-hidden max-h-[92vh] overflow-y-auto"
         >
           <Card variant="default" className="bg-[#FAF7F2] border-[#E2D7C5] p-5 sm:p-7 shadow-lg relative">
             {/* Close Button */}
             <button
-              onClick={onClose}
+              onClick={handleSafeClose}
               className="absolute top-4 right-4 p-1.5 rounded-lg bg-[#EFE9DE] text-[#1B2430] hover:bg-[#E2D7C5] transition-colors"
               aria-label="Close consultation modal"
             >
@@ -60,44 +95,51 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                 </div>
                 <div className="space-y-1">
                   <h3 className="font-serif text-xl font-bold text-[#1B2430]">
-                    Consultation Request Received
+                    Consultation Request Registered
                   </h3>
                   <p className="text-xs sm:text-sm text-[#4B5A6C]">
-                    Thank you, {formData.name}. Our chamber office will call you back shortly on{" "}
-                    <strong className="text-[#1B2430]">{formData.phone}</strong> to confirm your slot.
+                    Adv. Deepak Gahlot&apos;s chamber will confirm your slot at {formData.phone}.
                   </p>
                 </div>
-                <div className="p-3 rounded-xl bg-[#EFE9DE] text-xs text-[#4B5A6C] text-left space-y-1">
-                  <p className="font-semibold text-[#1B2430]">Chamber Address for In-Person Meeting:</p>
-                  <p>Chamber No. 154, E-Block, Rajasthan High Court (Mon-Sat, 9:30 AM - 7 PM)</p>
+                <div className="p-3 bg-[#EFE9DE] rounded-xl text-xs text-[#1B2430] space-y-1 text-left">
+                  <div className="font-semibold">Direct Chamber Connect:</div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-[#536455]" />
+                    <span>+91 70144 38542</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-3.5 h-3.5 text-[#536455]" />
+                    <span>Chamber No. 154, E-Block, Rajasthan High Court</span>
+                  </div>
                 </div>
-                <Button variant="primary" fullWidth onClick={handleReset}>
+                <Button variant="primary" size="md" fullWidth onClick={handleReset}>
                   Done
                 </Button>
               </div>
             ) : (
-              <div className="space-y-5">
+              <div className="space-y-4">
                 <div className="space-y-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#536455]">
-                    Rajasthan High Court Advocate
-                  </span>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#536455]">
+                    <Calendar className="w-4 h-4" />
+                    <span>Direct Chamber Appointment</span>
+                  </div>
                   <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1B2430]">
-                    Book a Legal Consultation
+                    Schedule Legal Consultation
                   </h2>
                   <p className="text-xs text-[#4B5A6C]">
-                    Fill in your details below to request a meeting at the High Court chamber or a phone discussion.
+                    Confidential evaluation for Rajasthan High Court & District matters.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-3.5">
+                <form onSubmit={handleSubmit} className="space-y-3 pt-2">
                   <div>
                     <label className="block text-xs font-semibold text-[#1B2430] mb-1">
-                      Your Full Name *
+                      Full Name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Ramesh Kumar"
+                      placeholder="Enter your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D7C5] bg-[#FAF7F2] text-sm text-[#1B2430] focus:outline-none focus:ring-2 focus:ring-[#1B2430]"
@@ -106,7 +148,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
                   <div>
                     <label className="block text-xs font-semibold text-[#1B2430] mb-1">
-                      Phone Number *
+                      Mobile / WhatsApp Number *
                     </label>
                     <input
                       type="tel"
@@ -128,11 +170,15 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-3 py-2.5 rounded-xl border border-[#E2D7C5] bg-[#FAF7F2] text-xs sm:text-sm text-[#1B2430] focus:outline-none focus:ring-2 focus:ring-[#1B2430]"
                       >
-                        <option value="Civil Law">Civil Litigation</option>
-                        <option value="Criminal Law">Criminal Defense</option>
-                        <option value="Family Law">Family & Divorce Law</option>
-                        <option value="High Court Writ">High Court Writ / Appeal</option>
-                        <option value="Property Dispute">Property & Revenue</option>
+                        <option value="Civil Litigation">Civil Litigation</option>
+                        <option value="Criminal Matters">Criminal Defense</option>
+                        <option value="Cyber Law & IT Frauds">Cyber Law & IT Frauds</option>
+                        <option value="MACT (Accident Claims)">MACT (Accident Claims)</option>
+                        <option value="Family & Divorce">Family & Divorce Law</option>
+                        <option value="Property Disputes">Property & Revenue</option>
+                        <option value="Bail Applications">Bail Application</option>
+                        <option value="Consumer Cases">Consumer Protection</option>
+                        <option value="High Court Writ">High Court Writ Petition</option>
                       </select>
                     </div>
 
@@ -158,27 +204,26 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     </label>
                     <textarea
                       rows={2}
-                      placeholder="Briefly state your matter (e.g. Land dispute in Jaipur court, High Court bail application)"
+                      placeholder="Briefly describe your legal query..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-xl border border-[#E2D7C5] bg-[#FAF7F2] text-xs sm:text-sm text-[#1B2430] focus:outline-none focus:ring-2 focus:ring-[#1B2430]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D7C5] bg-[#FAF7F2] text-sm text-[#1B2430] focus:outline-none focus:ring-2 focus:ring-[#1B2430]"
                     />
                   </div>
 
                   <div className="pt-2">
                     <Button variant="primary" size="md" fullWidth type="submit">
-                      Confirm Consultation Request
+                      Confirm Appointment Request
                     </Button>
                   </div>
                 </form>
 
-                <div className="pt-2 border-t border-[#E2D7C5] text-center">
-                  <p className="text-xs text-[#4B5A6C]">
-                    Need urgent assistance?{" "}
-                    <a href="tel:+917014438542" className="font-semibold text-[#1B2430] underline">
-                      Call Chambers Directly (+91 70144 38542)
-                    </a>
-                  </p>
+                <div className="pt-2 border-t border-[#E2D7C5]/60 flex items-center justify-between text-[11px] text-[#4B5A6C]">
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-[#536455]" />
+                    Chambers: Mon-Sat
+                  </span>
+                  <span>Strict Confidentiality Guaranteed</span>
                 </div>
               </div>
             )}

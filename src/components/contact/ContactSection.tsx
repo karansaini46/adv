@@ -17,7 +17,7 @@ export function ContactSection({ onBookConsultation }: ContactSectionProps) {
     "https://wa.me/917014438542?text=Hello%20Adv.%20Deepak%20Gahlot,%20I%20need%20legal%20guidance.";
 
   return (
-    <section className="py-6 sm:py-10 bg-[#FAF7F2]">
+    <section id="contact" className="py-6 sm:py-10 bg-[#FAF7F2] scroll-mt-16">
       <Container size="default">
         {/* Section Header */}
         <div className="space-y-1 mb-4 sm:mb-6 text-center sm:text-left">

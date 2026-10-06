@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -11,8 +11,12 @@ import {
   Home,
   FileKey2,
   ShoppingBag,
+  Laptop,
+  Car,
   ArrowRight,
   X,
+  Phone,
+  Calendar,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -44,6 +48,20 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
       icon: <ShieldAlert className="w-4 h-4 text-[#536455]" />,
     },
     {
+      title: "Cyber Law & IT Frauds",
+      description: "Online fraud, banking scams, identity theft, and IT Act offenses defense.",
+      detail:
+        "Legal defense and prosecution before Cyber Crime Police Stations, District Courts, and Rajasthan High Court. Covers UPI/banking fraud, unauthorized transactions, identity theft, data offenses, social media defamation, and Information Technology Act (Sec 43, 66) matters.",
+      icon: <Laptop className="w-4 h-4 text-[#536455]" />,
+    },
+    {
+      title: "MACT (Accident Claims)",
+      description: "Motor Accident Claims Tribunal compensation, injury, and insurance liability.",
+      detail:
+        "Skilled advocacy before Jaipur Motor Accident Claims Tribunals (MACT) and High Court appeals. Maximizing compensation for road accident death and permanent disability, insurance liability disputes, and driver/owner claim defense.",
+      icon: <Car className="w-4 h-4 text-[#536455]" />,
+    },
+    {
       title: "Family & Divorce",
       description: "Mutual divorce, child custody, alimony, and domestic violence legal support.",
       detail:
@@ -73,15 +91,44 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
     },
   ];
 
+  const handleClosePractice = useCallback(() => {
+    if (window.location.hash === "#practice-detail") {
+      window.history.back();
+    } else {
+      setSelectedPractice(null);
+    }
+  }, []);
+
+  // Sync browser history so pressing Back button closes the modal instead of leaving the website
+  useEffect(() => {
+    if (selectedPractice) {
+      window.history.pushState({ practiceModal: true }, "", "#practice-detail");
+      const handlePopState = () => {
+        setSelectedPractice(null);
+      };
+      window.addEventListener("popstate", handlePopState);
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }
+  }, [selectedPractice]);
+
   const handleCardClick = (item: (typeof practiceItems)[0]) => {
     setSelectedPractice(item);
+  };
+
+  const handleConsultFromModal = () => {
+    const title = selectedPractice?.title || "";
+    handleClosePractice();
     if (onSelectPractice) {
-      onSelectPractice(item.title);
+      setTimeout(() => {
+        onSelectPractice(title);
+      }, 100);
     }
   };
 
   return (
-    <section className="py-6 sm:py-10">
+    <section id="practice" className="py-6 sm:py-10 scroll-mt-16">
       <Container size="default">
         {/* Section Header */}
         <div className="space-y-1 mb-4 sm:mb-6 text-center sm:text-left">
@@ -90,12 +137,12 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
             Core Areas of Practice
           </h2>
           <p className="text-xs sm:text-sm text-[#4B5A6C]">
-            Targeted legal solutions at the Rajasthan High Court & Subordinate Courts.
+            Civil, Criminal, Cyber Law, MACT, and High Court writ matters.
           </p>
         </div>
 
-        {/* 2-Column Mobile Grid (grid-cols-2 on mobile, grid-cols-3 on md+) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-4">
+        {/* 2-Column Mobile Grid (grid-cols-2 on mobile, grid-cols-4 on md+) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
           {practiceItems.map((item, index) => (
             <motion.div
               key={index}
@@ -119,7 +166,7 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
                     {item.title}
                   </h3>
 
-                  {/* One-Line Description (Under 12 Words) */}
+                  {/* One-Line Description */}
                   <p className="text-[11px] sm:text-xs text-[#4B5A6C] leading-snug line-clamp-2">
                     {item.description}
                   </p>
@@ -138,15 +185,19 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
         {/* Detail Modal for Selected Practice */}
         <AnimatePresence>
           {selectedPractice && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1B2430]/60 backdrop-blur-xs">
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1B2430]/60 backdrop-blur-xs"
+              onClick={handleClosePractice}
+            >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                className="w-full max-w-md bg-[#FAF7F2] border border-[#E2D7C5] rounded-[16px] p-5 sm:p-6 space-y-4 shadow-lg relative"
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-md bg-[#FAF7F2] border border-[#E2D7C5] rounded-[16px] p-5 sm:p-6 space-y-4 shadow-lg relative max-h-[90vh] overflow-y-auto"
               >
                 <button
-                  onClick={() => setSelectedPractice(null)}
+                  onClick={handleClosePractice}
                   className="absolute top-4 right-4 p-1.5 rounded-xl bg-[#EFE9DE] text-[#1B2430] hover:bg-[#E2D7C5] transition-colors"
                   aria-label="Close detail modal"
                 >
@@ -170,17 +221,27 @@ export function PracticeGrid({ onSelectPractice }: PracticeGridProps) {
                 </p>
 
                 <div className="pt-2 flex flex-col gap-2">
+                  <button
+                    onClick={handleConsultFromModal}
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#1B2430] text-[#FAF7F2] text-xs sm:text-sm font-semibold hover:bg-[#273444] transition-colors"
+                  >
+                    <Calendar className="w-4 h-4 text-[#FAF7F2]" />
+                    <span>Book Consultation for this Matter</span>
+                  </button>
+
                   <a
                     href="tel:+917014438542"
-                    className="w-full text-center py-2.5 px-4 rounded-xl bg-[#1B2430] text-[#FAF7F2] text-xs sm:text-sm font-semibold hover:bg-[#273444] transition-colors"
+                    className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-[#EFE9DE] text-[#1B2430] text-xs sm:text-sm font-semibold hover:bg-[#E2D7C5] transition-colors"
                   >
-                    Discuss Case with Advocate (+91 70144 38542)
+                    <Phone className="w-3.5 h-3.5 text-[#536455]" />
+                    <span>Call Advocate: +91 70144 38542</span>
                   </a>
+
                   <button
-                    onClick={() => setSelectedPractice(null)}
-                    className="w-full py-2 text-xs text-[#4B5A6C] hover:text-[#1B2430]"
+                    onClick={handleClosePractice}
+                    className="w-full py-1 text-xs text-[#4B5A6C] hover:text-[#1B2430]"
                   >
-                    Close Overview
+                    Close
                   </button>
                 </div>
               </motion.div>
