@@ -17,8 +17,8 @@ export function Header({ onOpenConsultation }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-sm border-b border-[#E2D7C5]">
-      {/* Top micro bar for Court Location */}
-      <div className="bg-[#EFE9DE] py-1 px-4 text-xs text-[#4B5A6C] border-b border-[#E2D7C5]">
+      {/* Top micro bar for Court Location - Desktop only to save space on mobile */}
+      <div className="hidden sm:block bg-[#EFE9DE] py-1 px-4 text-xs text-[#4B5A6C] border-b border-[#E2D7C5]">
         <Container className="flex justify-between items-center text-[11px] sm:text-xs">
           <div className="flex items-center gap-1.5 font-medium">
             <MapPin className="w-3 h-3 text-[#536455]" />

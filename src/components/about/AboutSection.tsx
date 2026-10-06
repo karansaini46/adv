@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { Award, ShieldCheck, Scale, HeartHandshake } from "lucide-react";
+import { Scale } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface AboutSectionProps {
@@ -66,18 +66,6 @@ export function AboutSection({ onBookConsultation }: AboutSectionProps) {
                 <p>
                   Chamber No. 154, E-Block, Rajasthan High Court. Contact: +91 70144 38542.
                 </p>
-              </div>
-
-              {/* Core Pillars Chips */}
-              <div className="pt-2 grid grid-cols-2 gap-2 text-[11px] sm:text-xs">
-                <div className="p-2 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] flex items-center gap-1.5 font-medium text-[#1B2430]">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#536455] shrink-0" />
-                  <span>Ethical Representation</span>
-                </div>
-                <div className="p-2 rounded-xl bg-[#EFE9DE] border border-[#E2D7C5] flex items-center gap-1.5 font-medium text-[#1B2430]">
-                  <HeartHandshake className="w-3.5 h-3.5 text-[#536455] shrink-0" />
-                  <span>Personalized Advice</span>
-                </div>
               </div>
             </div>
           </div>
